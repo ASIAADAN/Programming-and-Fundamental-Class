@@ -24,8 +24,9 @@ cin>>stu[i];
 
 
 }
- cout<<"names in alphabatic order";
+ 
+}
+cout<<"names in alphabatic order";
 for(int i=0; i<n ;i++){
     cout<<stu[i];
-}
 }
