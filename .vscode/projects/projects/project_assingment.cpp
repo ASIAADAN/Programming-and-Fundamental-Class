@@ -3,17 +3,19 @@
 using namespace std;
 int main()
 {
-    int car_num[100];
-    int car_cost[100];
-    int car_model[100];
     int car_count = 0;
-    string car_name[100];
-    string car_status[100];
-    string car_colour[100];
     int total_scales = 0;
     double total_revenue = 0.0;
-    double car_price[100];
     int total_sales_count = 0;
+
+    const int SIZE = 6;
+    int car_model[SIZE] = {2022, 2021, 2018, 2020, 2023, 2022};
+    string car_name[SIZE] = {"Civic", "audi", "Mehran", "City", "Alto", "jeep"};
+    string car_colour[SIZE] = {"Black", "White", "Silver", "brown", "green", "olive"};
+    int model[SIZE] = {2022, 2021, 2018, 2020, 2023, 2022};
+    string car_num[SIZE] = {"ABC123", "XYZ456", "LMN789", "DEF321", "GHI654", "JKL987"};
+    string car_status[SIZE] = {"Available", "Booked...", "Available", "Booked...", "Available", "Available"};
+    double car_price[SIZE] = {5000000, 4500000, 1500000, 4000000, 3000000, 8000000};
 
     // main header od UMS
     system("cls");
@@ -61,7 +63,7 @@ int main()
                         system("cls");
                         cout << "1.Add new vahicle" << endl;
                         cout << "2.Totals sales" << endl;
-                        cout << "3.View all Bookings" << endl;
+                        cout << "3.View all cars" << endl;
                         cout << "4.Remove Vehicle" << endl;
                         cout << "5.Total Revenue" << endl;
                         cout << "6.logout" << endl;
@@ -89,7 +91,7 @@ int main()
                             cin >> car_colour[car_count];
 
                             cout << "enter the cost of car";
-                            cin >> car_cost[car_count];
+                            cin >> car_price[car_count];
 
                             car_count++;
                             cout << "\nVehicle added successfully!";
@@ -114,16 +116,21 @@ int main()
                         else if (admin_option == 3)
                         {
 
-                            // View Records
+                            // view all cars
 
-                            cout << "Name\tModel\tStatus\tColour\tNumber\tcost" << endl;
+                            cout << "Name    Model    Status    Colour    Number    cost" << endl;
 
-                            for (int i = 0; i < car_count; i++)
+                            for (int i = 0; i < SIZE; i++)
                             {
-                                if (car_name[i] != "")
-                                {
-                                    cout << car_name[i] << "\t" << car_model[i] << "\t" << car_status[i] << "\t" << car_colour[i] << "\t" << car_num[i] << "\t" << car_cost[i] << endl;
-                                }
+                                cout << car_name[i] << "    "
+                                     << car_model[i] << "    "
+                                     << car_status[i] << "    "
+                                     << car_colour[i] << "    "
+
+                                     << car_num[i] << "    "
+                                     << car_price[i] << endl;
+
+                                cout << "------------------------" << endl;
                             }
                         }
                         else if (admin_option == 4)
@@ -186,10 +193,10 @@ int main()
                 cout << "**********************************************************" << endl;
                 cout << "1.view cars" << endl;
                 cout << "2.book a test drive" << endl;
-                cout << "enter the option"<< endl;
-                cout << "3.search car:"<< endl;
-                cout << "4.exit the system:"<< endl;
-                cout << "enter the option"<< endl;
+                cout << "enter the option" << endl;
+                cout << "3.search car:" << endl;
+                cout << "4.exit the system:" << endl;
+                cout << "enter the option" << endl;
 
                 int costumer_option;
                 cin >> costumer_option;
@@ -200,14 +207,23 @@ int main()
                 else if (costumer_option == 1)
 
                 {
-                    cout << "Name\tModel\tStatus\tColour\tNumber\tcost" << endl;
+                    cout << "Name    Model    Status    Colour    Number    cost" << endl;
 
-                    for (int i = 0; i < car_count; i++)
+                    for (int i = 0; i < SIZE; i++)
                     {
-                        if (car_name[i] != "")
-                        {
-                            cout << car_name[i] << "\t" << car_model[i] << "\t" << car_status[i] << "\t" << car_colour[i] << "\t" << car_num[i] << "\t" << car_cost[i] << endl;
-                        }
+                        cout << car_name[i] << "    "
+
+                             << car_model[i] << "    "
+
+                             << car_status[i] << "    "
+
+                             << car_colour[i] << "    "
+
+                             << car_num[i] << "    "
+
+                             << car_price[i] << endl;
+
+                        cout << "------------------------" << endl;
                     }
                     getch();
                 }
@@ -234,8 +250,8 @@ int main()
                 {
                     int choice;
                     cout << "Car Search Menu:\n";
-                    cout << "1. serch of model\n";
-                    cout << "2. serch of price\n";
+                    cout << "1. serch by model\n";
+                    cout << "2. serch by price\n";
                     cout << "enter the choice: ";
                     cin >> choice;
 
@@ -246,14 +262,14 @@ int main()
                         cin >> searchModel;
 
                         // search by model
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i <SIZE; i++)
                         {
                             if (car_model[i] == searchModel)
                             {
                                 cout << "\nmodel of the car is:\n";
                                 cout << "Model: " << car_model[i] << endl;
 
-                                cout << "Price: " << car_cost[i] << endl;
+                                cout << "Price: " << car_price[i] << endl;
                             }
                         }
                     }
@@ -267,9 +283,9 @@ int main()
                         cout << "\nAvailable cars:\n";
                         for (int i = 0; i < 3; i++)
                         {
-                            if (car_cost[i] <= maxPrice)
+                            if (car_price[i] <= maxPrice)
                             {
-                                cout << "Model: " << car_model[i] << ", Price: " << car_cost[i] << endl;
+                                cout << "Model: " << car_model[i] << ", Price: " << car_price[i] << endl;
                             }
                         }
                     }
