@@ -6,7 +6,10 @@ using namespace std;
 
 void viewCars(string car_name[], int car_model[], string car_status[],
               string car_colour[], string car_num[], double car_price[], int size)
+
 {
+    cout<<"@@@@@@@@@@@...AVALAIBLE CARS...@@@@@@@@@@@@@@@"<<endl;
+
     cout << "Name    Model    Status    Colour    Number    cost" << endl;
 
     for (int i = 0; i < size; i++)
@@ -63,6 +66,45 @@ void searchByModel(int car_model[], double car_price[], int size)
         }
     }
 }
+void buycar(int &total_sales_count,
+            string car_name[], double car_price[], double &total_revenue, int size)
+{
+
+    string name;
+    cout << "your name:";
+    cin >> name;
+    int num;
+    cout << "enter your phone number:";
+    cin >> num;
+    string loc;
+    cout << "enter the location where you r currently living:";
+    cin >> loc;
+    string car;
+    cout << "enter the name of car you want to buy:";
+    cin >> car;
+    for (int i = 0; i < size; i++)
+    {
+        if (car_name[i] == car)
+        {
+            cout << "car is availabe";
+            string color;
+
+            cout << "black,blue,red,white,grey" << endl;
+
+            cout << "enter the colour of car:" << endl;
+            cin >> color;
+            cout << "the colour of your car is";
+            cout << "Price: " << car_price[i] << endl;
+            cout << "congrates your " << car << " of  " << color << "has been booked" << endl;
+            cout << "you can recieve your car on 26 of apil" << endl;
+            cout << "thanku for being a part of our company" << endl;
+
+            total_sales_count++;
+
+            total_revenue = total_revenue + car_price[i];
+        }
+    }
+}
 
 // -------- MAIN --------
 
@@ -81,8 +123,6 @@ int main()
     string car_num[SIZE] = {"ABC123", "XYZ456", "LMN789", "DEF321", "GHI654", "JKL987"};
     string car_status[SIZE] = {"Available", "Booked...", "Available", "Booked...", "Available", "Available"};
     double car_price[SIZE] = {5000000, 4500000, 1500000, 4000000, 3000000, 8000000};
-
-    system("cls");
 
     while (true)
     {
@@ -124,15 +164,16 @@ int main()
                     cout << "loged in sucessfully" << endl;
                     while (true)
                     {
+
                         system("cls");
                         cout << "1.Add new vahicle" << endl;
                         cout << "2.Totals sales" << endl;
                         cout << "3.View all cars" << endl;
-                        cout << "4.Remove Vehicle" << endl;
                         cout << "5.Total Revenue" << endl;
                         cout << "6.logout" << endl;
                         cout << "choose the option: ";
                         int admin_option;
+                        cout << "enter your option";
                         cin >> admin_option;
 
                         if (admin_option == 1)
@@ -169,8 +210,10 @@ int main()
                 system("cls");
                 cout << "1.view cars" << endl;
                 cout << "2.book a test drive" << endl;
-                cout << "3.search car:" << endl;
-                cout << "4.exit the system:" << endl;
+                cout << "3. buy a car" << endl;
+
+                cout << "4.search car:" << endl;
+                cout << "5.exit the system:" << endl;
 
                 int costumer_option;
                 cin >> costumer_option;
@@ -199,13 +242,22 @@ int main()
                     cin >> date;
 
                     cout << "Hello " << name << " your test drive confirmed on " << date << endl;
+
                     getch();
                 }
                 else if (costumer_option == 3)
                 {
+                    buycar(total_sales_count,
+                           car_name, car_price, total_revenue, SIZE);
+
+                    getch();
+                }
+
+                else if (costumer_option == 4)
+                {
                     searchByModel(car_model, car_price, SIZE);
                 }
-                else if (costumer_option == 4)
+                else if (costumer_option == 5)
                 {
                     break;
                 }
